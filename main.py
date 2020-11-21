@@ -27,13 +27,18 @@ while True:
         print("2: rename certain files in the folder")
         choice_2 = int(input())
         if choice_2 == 1:
+
             files = os.listdir(file_path)
+
             print("Please insert the new name for the files with no numbers")
             name = str(input())
+
             print("Please insert the number to start with")
             number = int(input())
+
             print("Please insert the character between " + name + " " + str(number))
             splitter = str(input())
+
             for file in files:
                 extension_list = file.rsplit(".", 1)
                 extension = "." + extension_list[len(extension_list) - 1]
@@ -44,13 +49,23 @@ while True:
                 number = number + 1
                 if file == files[len(files) - 1]:
                     print("Done!")
+
             break
+
         elif choice_2 == 2:
+
             files = os.listdir(file_path)
 
+            number = 1
+
+            for file in files:
+                print(str(number) + "- " + file)
+                number = number + 1
+            break
     else:
         continue
 # todo add a while true if choice_2 isn't 1 or 2
 # todo add colors
 # todo add more comments
 # todo add try/except statement for ValueError
+# todo add FileNotFoundError
