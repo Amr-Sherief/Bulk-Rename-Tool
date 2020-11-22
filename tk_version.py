@@ -33,3 +33,4 @@ root.mainloop()
 
 # todo add comments
 # todo add a dialog box instead of inserting the path of the file
+# todo add a github repository
