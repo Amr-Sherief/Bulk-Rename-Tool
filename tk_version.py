@@ -14,12 +14,17 @@ def button4():
     global files_split
     files_split = entry_3.get()
     count = 0
+    files_number = int(entry_2.get())
 
     for file in file_menu:
-        extension = file.rsplit(".", 1)
-        print(extension)
-        count = count + 1
-
+        extension_list = file.rsplit(".", 1)
+        extension = "." + extension_list[1]
+        old_path = extension_list[0] + extension
+        folder_path = file.rsplit("/", 1)
+        folder_path_1 = folder_path[0] + "/"
+        new_path = folder_path_1 + files_name + files_split + str(files_number) + extension
+        os.rename(old_path, new_path)
+        files_number =int(files_number) + 1
 
 def button3():
     global files_num
@@ -36,7 +41,7 @@ def button3():
 def button2():
     global files_name
     global entry_2
-    files_name = entry_1.get()
+    files_name = str(entry_1.get())
     my_label_1 = tk.Label(root, text="Insert the first files number")
     my_label_1.pack()
     entry_2 = tk.Entry(root, fg="white", bg="black")
