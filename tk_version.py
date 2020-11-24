@@ -10,8 +10,6 @@ intro = tk.Label(root, text="This is a file renaming program", fg="Blue")       
 intro.pack()
 
 
-def Error():
-    button2()
 
 def button4():
     global files_split
@@ -57,7 +55,7 @@ def button3():
 
     try:
         files_num = int(entry_2.get())
-    except:
+    except:                               # Create an exception if the above variable was remark inserted as a string
 
         my_label_1.destroy()
         entry_2.destroy()
@@ -65,9 +63,10 @@ def button3():
 
         error = tk.Label(root, text="Please Only insert a number")
         error.pack()
-        click = tk.Button(root, text="Click Me!!", command=Error)
+        click = tk.Button(root, text="Exit", command=root.destroy)
+        # a button that destroys the main (root) window and exits the program
         click.pack()
-        return
+        return                             # stops the function at this point
 
     # a variable containing the the number to begin with in indexing the files names
 
@@ -145,8 +144,3 @@ b__2.pack(side="left")        # packs the button to the left of the frame and to
 
 root.mainloop()             # initiates the loop for the root window
 # remark without the main loop the program won't run as it refreshes the window
-
-# todo add a dialog box instead of inserting the path of the file
-# todo add a github repository
-# todo add try\except
-# todo add a function to rename one file
