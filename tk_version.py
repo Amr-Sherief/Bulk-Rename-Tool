@@ -12,29 +12,31 @@ intro.pack()
 
 def single2():
 
-    rename = entry_s_1.get()
+    rename = entry_s_1.get()      # the file new name
 
     my_label_s.destroy()
     entry_s_1.destroy()
     b_s_2.destroy()
 
-    extension_list_s = file_dialog.rsplit(".", 1)
-    extension_s = "." + extension_list_s[1]
-    old_path_s = extension_list_s[0] + extension_s
-    folder_path_s = file_dialog.rsplit("/", 1)
-    folder_path_1_s = folder_path_s[0] + "/"
-    new_path_s = folder_path_1_s + rename + extension_s
-    os.rename(old_path_s, new_path_s)
-    change = folder_path_s[1] + " --> " + rename
+    extension_list_s = file_dialog.rsplit(".", 1)         # Splits a list to get the file extension
+    extension_s = "." + extension_list_s[1]               # gets the file extension
+    old_path_s = extension_list_s[0] + extension_s        # gets the old path for the file
+    folder_path_s = file_dialog.rsplit("/", 1)            # Splits a list to get the folder path
+    folder_path_1_s = folder_path_s[0] + "/"              # gets the folder path
+    new_path_s = folder_path_1_s + rename + extension_s   # gets the new path for the file with the new name
+    os.rename(old_path_s, new_path_s)                     # renames the file
 
-    change_label_s = tk.Label(root, text=change)
+    change = folder_path_s[1] + " --> " + rename          # text with the changed that happened to the file's name
+
+    change_label_s = tk.Label(root, text=change)          # a label with the change variable
     change_label_s.pack()
 
-    Done = tk.Label(root, text="Done")
-    Done.pack()
+    done = tk.Label(root, text="Done")
+    done.pack()
 
-    Exit = tk.Button(root, text="Exit", command=root.destroy)
-    Exit.pack()
+    exit_s = tk.Button(root, text="Exit", command=root.destroy)
+    # a button to destroy the main window and exit the program
+    exit_s.pack()
 
 
 def single1():
@@ -54,7 +56,6 @@ def single1():
     entry_s_1.pack()
     b_s_2 = tk.Button(root, text="Submit", command=single2)   # a button to start the (single2) function
     b_s_2.pack()
-
 
 
 def button4():
@@ -98,7 +99,6 @@ def button3():
     global entry_3
     global b_4
 
-
     try:
         files_num = int(entry_2.get())
     except:                               # Create an exception if the above variable was remark inserted as a string
@@ -134,7 +134,6 @@ def button2():
     global my_label_1
     global entry_2
     global b_3
-
 
     files_name = str(entry_1.get())                   # a variable with the files core name
 
