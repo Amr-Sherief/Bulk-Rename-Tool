@@ -10,6 +10,52 @@ intro = tk.Label(root, text="This is a file renaming program", fg="Blue")       
 intro.pack()
 
 
+def single2():
+
+    rename = entry_s_1.get()
+
+    my_label_s.destroy()
+    entry_s_1.destroy()
+    b_s_2.destroy()
+
+    extension_list_s = file_dialog.rsplit(".", 1)
+    extension_s = "." + extension_list_s[1]
+    old_path_s = extension_list_s[0] + extension_s
+    folder_path_s = file_dialog.rsplit("/", 1)
+    folder_path_1_s = folder_path_s[0] + "/"
+    new_path_s = folder_path_1_s + rename + extension_s
+    os.rename(old_path_s, new_path_s)
+    change = folder_path_s[1] + " --> " + rename
+
+    change_label_s = tk.Label(root, text=change)
+    change_label_s.pack()
+
+    Done = tk.Label(root, text="Done")
+    Done.pack()
+
+    Exit = tk.Button(root, text="Exit", command=root.destroy)
+    Exit.pack()
+
+
+def single1():
+    global file_dialog
+    global my_label_s
+    global entry_s_1
+    global b_s_2
+
+    why_1.destroy()
+
+    file_dialog = tk.filedialog.askopenfilename(parent=root, filetypes=[("All Files", "*.*")])
+    # defines a file dialog from which the client would choose the file to rename
+    my_label_s = tk.Label(root, text="Insert the file new name")
+    my_label_s.pack()
+    entry_s_1 = tk.Entry(root, fg="white", bg="black")
+    # An Entry with the new name for the file remark after being renamed
+    entry_s_1.pack()
+    b_s_2 = tk.Button(root, text="Submit", command=single2)   # a button to start the (single2) function
+    b_s_2.pack()
+
+
 
 def button4():
     global files_split
@@ -132,10 +178,19 @@ def multiple():
     why.pack()
 
 
+def single():
+    global why_1
+    b__1.destroy()
+    b__2.destroy()
+    why_1 = tk.Button(root, text="Open Files", command=single1)  # a button to start the (button) function
+    why_1.pack()
+
+
 frame = tk.Frame(root)                 # a frame to put the first choices buttons ("b__1" and "b__2") in
 frame.pack(side="top")                 # packs the frame at the top center of the (root) window
 
-b__1 = tk.Button(frame, text="Rename one File")    # the choice to rename one file
+b__1 = tk.Button(frame, text="Rename one File", command=single)
+# the choice to rename one file                 # a button to start the (single) function
 b__1.pack(side="left")        # packs the button to the left of the frame
 
 b__2 = tk.Button(frame, text="Rename multiple files", command=multiple)
