@@ -10,6 +10,9 @@ intro = tk.Label(root, text="This is a file renaming program", fg="Blue")       
 intro.pack()
 
 
+def Error():
+    button2()
+
 def button4():
     global files_split
 
@@ -51,7 +54,21 @@ def button3():
     global entry_3
     global b_4
 
-    files_num = int(entry_2.get())
+
+    try:
+        files_num = int(entry_2.get())
+    except:
+
+        my_label_1.destroy()
+        entry_2.destroy()
+        b_3.destroy()
+
+        error = tk.Label(root, text="Please Only insert a number")
+        error.pack()
+        click = tk.Button(root, text="Click Me!!", command=Error)
+        click.pack()
+        return
+
     # a variable containing the the number to begin with in indexing the files names
 
     my_label_1.destroy()
@@ -72,6 +89,7 @@ def button2():
     global my_label_1
     global entry_2
     global b_3
+
 
     files_name = str(entry_1.get())                   # a variable with the files core name
 
