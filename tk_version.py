@@ -2,9 +2,9 @@ import tkinter as tk
 from tkinter import filedialog
 import os
 
-root = tk.Tk()
-root.title("Bulk Rename Tool")
-root.attributes('-fullscreen', True)
+root = tk.Tk()                            # Defines the window where the program would be
+root.title("Bulk Rename Tool")            # Defines the title of the window
+root.attributes('-fullscreen', True)      # Opens the window in fullscreen
 
 intro = tk.Label(root, text="This is a file renaming program", fg="Blue")
 intro.pack()
@@ -28,6 +28,9 @@ def button4():
         folder_path_1 = folder_path[0] + "/"
         new_path = folder_path_1 + files_name + files_split + str(files_number) + extension
         os.rename(old_path, new_path)
+        change = folder_path[1] + " --> " + files_name + files_split + str(files_number) + extension
+        change_label = tk.Label(root, text=change)
+        change_label.pack()
         files_number = int(files_number) + 1
 
     last_label = tk.Label(root, text="Done!")
