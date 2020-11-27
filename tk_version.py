@@ -160,6 +160,7 @@ def button():
 
     file_menu = tk.filedialog.askopenfilenames(parent=root, filetypes=[("All Files", "*.*")])
     # defines a file dialog from which the client would choose the files to rename
+    file_menu_val = file_menu
     my_label = tk.Label(root, text="Insert the files core name (without numbers)")
     my_label.pack()
     entry_1 = tk.Entry(root, fg="white", bg="black")
